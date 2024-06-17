@@ -1,0 +1,49 @@
+<h2>Editar Conta </h2>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+    </div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+    <div class="field">
+      <%= f.label :password, "Senha" %> <i>
+        (Deixe em branco caso não queria mudar sua senha)
+        <% if @minimum_password_length %>
+          <em>Mínimo <%= @minimum_password_length %> caracteres</em>
+        <% end %>
+      </i>
+      <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder:"Senha nova" %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirmação de Senha" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control", placeholder:"Confirmar senha nova" %>
+    </div>
+    <br/>
+    <div class="field">
+      <%= f.label :current_password, "Senha atual" %> <i>(Nos precisamos da sua senha atual para mudar ela)</i><br />
+      <%= f.password_field :current_password, autocomplete: "current-password", class:"form-control", placeholder:"Senha atual" %>
+    </div>
+  </div>
+  <br/>
+  <div class="actions">
+    <%= f.submit "Editar", class:"btn btn-secondary" %>
+  </div>
+<% end %>
+<br/>
+<%= link_to "Voltar", :back %>
+<br/>
+<br/>
+<div class="card">
+  <div class="card-header">
+    <h4>Cancelar Conta</h4>
+  </div>
+  <div class="card-body">
+    <h5 class="card-tittle">
+      Infeliz? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Tem certeza?", turbo_confirm: "Tem certeza?" }, method: :delete, class:"btn btn-danger" %>
+    </h5>
+  </div>
+</div>

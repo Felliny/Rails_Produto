@@ -1,0 +1,20 @@
+<div id="<%= dom_id produto %>" class:"jumbotron">
+  <h1 class="display-4">
+    <p>
+      <strong>Nome:</strong>
+      <%= produto.nome %>
+    </p>
+  </h1>
+  <p class="lead">
+    <strong>Codigo:</strong>
+    <%= produto.codigo %>
+  </p>
+  <p class="lead">
+    <strong>Estoque:</strong>
+    <%= produto.estoque %>
+  </p>
+  <p class="lead">
+    <strong>Preço unitário:</strong>
+    <%= number_to_currency(@produto.preco_unitario, unit: "R$ ", separator: ",", delimiter: ".", format: "%u %n") %>
+  </p>
+</div>
